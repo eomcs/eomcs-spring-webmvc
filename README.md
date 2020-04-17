@@ -9,16 +9,19 @@ Spring WebMVC 프레임워크 학습 예제
 
 ## src-02 : 스프링 WebMVC 적용
 
-- Spring Web MVC 라이브러리 추가
-- HelloController 생성
-- /WEB-INF/app-context.xml 파일 생성
-  - Spring IoC 컨테이너 설정 파일
+- Spring WebMVC 라이브러리 추가
+  - build.gradle 변경
 - /WEB-INF/web.xml 파일 준비
   - 프론트 컨트롤러 역할을 수행할 스프링 webmvc 에서 제공하는 서블릿을 배치한다.
+- /WEB-INF/app-context.xml 파일 생성
+  - Spring IoC 컨테이너 설정 파일
+- HelloController 생성
 
 ## src-03 : IoC 설정 파일의 위치 
 
 - /config/app-context.xml 로 위치 이동
+  - 클라이언트가 자원을 가져갈 수 있는 경로에는 설정 파일을 두면 안된다.
+  - 즉 /config 폴더 같은 위치에는 설정파일을 두지 말라.
 - /WEB-INF/web.xml 변경
 
 ## src-04 : IoC 설정 파일의 위치 
@@ -26,6 +29,10 @@ Spring WebMVC 프레임워크 학습 예제
 - /WEB-INF/app-servlet.xml 로 위치 이동 및 이름 변경
 - /WEB-INF/web.xml 변경
   - contextConfigLocation 초기화 파라미터 삭제
+  - /WEB-INF/서블릿이름-servlet.xml 파일을 기본으로 찾는다.
+  - 없으면 예외가 발생한다.
+- DispatcherServlet에서 IoC 컨테이너를 설정하기 싫다면,
+  - contextConfigLocation의 값을 빈채로 두어라.
 
 ## src-05 : ContextLoaderListener와 DispatcherServlet의 IoC 컨테이너
 
@@ -36,17 +43,18 @@ Spring WebMVC 프레임워크 학습 예제
 - /WEB-INF/web.xml 변경
   - ContextLoaderListener 추가
   - ContextLoaderListener가 사용할 contextConfigLocation 파라미터 설정
-  - DispatcherServlet에 contextConfigLocation 초기화 파라미터 추가. 값은 빈채로 된다.
+  - DispatcherServlet에 contextConfigLocation 초기화 파라미터 추가. 
+    값은 빈채로 된다.
 
 ## src-06 : ContextLoaderListener와 DispatcherServlet의 관계
 
 - ContextLoaderListener의 IoC 컨테이너
   - 모든 프론트 컨트롤러 및 페이지 컨트롤러가 공유할 객체를 보관한다.
+  - /WEB-INF/config/app-context.xml 변경
 - DispatcherServlet의 IoC 컨테이너
   - 페이지 컨트롤러, 인터셉터 등 웹 관련 객체를 보관한다.
-- /WEB-INF/config/app-context.xml 변경
-- /WEB-INF/app-servlet.xml 변경
-- /WEB-INF/admin-servlet.xml 추가
+  - /WEB-INF/app-servlet.xml 변경
+  - /WEB-INF/admin-servlet.xml 추가
 - /WEB-INF/web.xml 변경
 
 ## src-07 : Java Config로 DispatcherServlet의 IoC 컨테이너 설정하기
