@@ -1,10 +1,8 @@
 package bitcamp.app1;
 
 import java.beans.PropertyEditorSupport;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
 
 // @ControllerAdvice
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 // => 페이지 컨트롤러를 실행할 때 충고하는 역할을 수행한다.
 // 즉 프론트 컨트롤러가 페이지 컨트롤러의 request handler를 호출하기 전에
 // 이 애노테이션이 붙은 클래스를 참고하여 적절한 메서드를 호출한다.
-// @ControllerAdvice
+@ControllerAdvice
 public class GlobalControllerAdvice {
 
   // 이 클래스에 프로퍼티 에디터를 등록하는 @InitBinder 메서드를 정의한다.
@@ -28,18 +26,18 @@ public class GlobalControllerAdvice {
   }
 
   class DatePropertyEditor extends PropertyEditorSupport {
-    SimpleDateFormat format;
-
-    public DatePropertyEditor() {
-      format = new SimpleDateFormat("yyyy-MM-dd");
-    }
-
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
       try {
-        Date date = format.parse(text);
-        setValue(date);
-      } catch (ParseException e) {
+        // String ==> java.util.Date
+        // SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        // Date date = format.parse(text);
+        // setValue(date);
+
+        // String ==> java.sql.Date
+        setValue(java.sql.Date.valueOf(text));
+
+      } catch (Exception e) {
         throw new IllegalArgumentException(e);
       }
     }

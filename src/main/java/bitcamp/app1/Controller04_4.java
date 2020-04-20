@@ -94,14 +94,14 @@ public class Controller04_4 {
     );
 
     // WebDataBinder에 프로퍼티 에디터 등록하기
-    // binder.registerCustomEditor(Car.class, // String을 Car 타입으로 바꾸는 에디터임을 지정한다.
-    // new CarPropertyEditor() // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
-    // );
+    binder.registerCustomEditor(Car.class, // String을 Car 타입으로 바꾸는 에디터임을 지정한다.
+        new CarPropertyEditor() // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
+    );
 
     // WebDataBinder에 프로퍼티 에디터 등록하기
-    // binder.registerCustomEditor(Engine.class, // String을 Engine 타입으로 바꾸는 에디터임을 지정한다.
-    // new EnginePropertyEditor() // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
-    // );
+    binder.registerCustomEditor(Engine.class, // String을 Engine 타입으로 바꾸는 에디터임을 지정한다.
+        new EnginePropertyEditor() // 바꿔주는 일을 하는 프로퍼티 에디터를 등록한다.
+    );
   }
 
   // PropertyEditor 만들기
@@ -122,7 +122,7 @@ public class Controller04_4 {
       try {
 
         // 1) String ==> java.util.Date
-        // this.format = new SimpleDateFormat("yyyy-MM-dd");
+        // SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         // Date date = format.parse(text); // String ===> java.util.Date
         // setValue(date); // 내부에 저장
 
@@ -169,7 +169,7 @@ public class Controller04_4 {
       Engine engine = new Engine();
       engine.setModel(values[0]);
       engine.setCc(Integer.parseInt(values[1]));
-      engine.setValve(Integer.parseInt(values[1]));
+      engine.setValve(Integer.parseInt(values[2]));
 
       setValue(engine);
     }
