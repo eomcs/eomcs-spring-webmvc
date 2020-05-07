@@ -8,8 +8,7 @@
 </head>
 <body>
 <h1>/WEB-INF/jsp2/error1.jsp</h1>
-<p>${requestScope["javax.servlet.error.message"]}</p>
-<p><%=request.getAttribute("javax.servlet.error.message")%></p>
-<p>${error}</p>
+<p>상태코드: ${requestScope["javax.servlet.error.status_code"]}</p>
+<p>오류메시지: ${requestScope["javax.servlet.error.message"]}</p>
 </body>
 </html>
