@@ -10,18 +10,6 @@
   </description>
 
   <display-name>java-spring-webmvc</display-name>
-
-
-  
-  <servlet>
-    <servlet-name>admin</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>admin</servlet-name>
-    <url-pattern>/admin/*</url-pattern>
-  </servlet-mapping>
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
