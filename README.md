@@ -208,7 +208,24 @@ gradle 을 실행하여 이클립스 IDE 용 웹 프로젝트 관련 파일을 �
   - `/admin/*` URL 매핑
   - 서블릿 이름은 `admin` 으로 설정
 
-## src-13 : Request Handler 정의하는 방법
+## src-13 : WebApplicationInitializer 구현체를 통해 DispatcherServlet 등록하기 응용 - Java Config 설정
+
+- RootConfig 생성
+  - ContextLoaderListener의 IoC 컨테이너가 사용할 Java Config 클래스
+- AppServletConfig 생성
+  - `app` DispatcherServlet의 IoC 컨테이너가 사용할 Java Config 클래스
+- AdminServletConfig 생성
+  - `admin` DispatcherServlet의 IoC 컨테이너가 사용할 Java Config 클래스
+- AppDispatcherServletInitializer 생성
+  - AbstractAnnotationConfigDispatcherServletInitializer 를 상속 받는다.
+  - `/app/*` URL 매핑
+  - 서블릿 이름은 `app` 으로 설정
+- AdminDispatcherServletInitializer 생성
+  - AbstractAnnotationConfigDispatcherServletInitializer 를 상속 받는다.
+  - `/admin/*` URL 매핑
+  - 서블릿 이름은 `admin` 으로 설정
+    -
+## src-14 : Request Handler 정의하는 방법
 
 - @Controller를 사용하여 페이지 컨트롤러 표시하기
 - Request Handler의 아규먼트
