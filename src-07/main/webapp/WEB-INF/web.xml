@@ -15,7 +15,8 @@
   <servlet>
     <servlet-name>app</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- Java Config로 IoC 컨테이너를 지정할 때는 기본 IoC 컨테이너를 교체해야 한다. 
+    <!-- Java Config로 IoC 컨테이너를 지정할 때는 
+         기본 IoC 컨테이너(XmlWebApplicationContext)를 교체해야 한다. 
          다음과 같이 초기화 파라미터를 통해 DispatcherServlet이 사용할 
          IoC 컨테이너 클래스와 Java Config 클래스를 설정한다.-->
     <init-param>

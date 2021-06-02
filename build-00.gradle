@@ -4,6 +4,14 @@ plugins {
     id 'war'
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8';
+} 
+
+war {
+  archiveBaseName = "spring"
+}
+
 repositories {
     jcenter()
 }
